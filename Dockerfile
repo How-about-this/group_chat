@@ -4,7 +4,11 @@ FROM krmp-d2hub-idock.9rum.cc/goorm/gradle:7.3.1-jdk17
 # 작업 디렉토리 설정
 WORKDIR /home/gradle/project
 
-# Spring 소스 코드를 이미지에 복사
+# gradlew 및 관련 파일을 이미지에 복사
+COPY gradlew /home/gradle/project/gradlew
+COPY gradle /home/gradle/project/gradle
+
+# 프로젝트 소스 코드를 이미지에 복사
 COPY . .
 
 # gradlew 파일에 실행 권한 부여
