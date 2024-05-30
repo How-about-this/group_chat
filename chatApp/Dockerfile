@@ -15,9 +15,9 @@ RUN echo "systemProp.http.proxyHost=krmp-proxy.9rum.cc\nsystemProp.http.proxyPor
 # gradlew를 이용한 프로젝트 필드
 RUN ./gradlew clean build -x test -Pargs="-Xlint:deprecation"
 
-# DATABASE_URL을 환경 변수로 삽입
-ENV DATABASE_URL=jdbc:mariadb://mariadb/krampoline
+# DATABASE_URL을 MongoDB 연결 문자열로 설정
+ENV DATABASE_URL=mongodb://mongodb/krampoline
 
 # 빌드 결과 jar 파일을 실행
-CMD ["java", "-jar", "/home/gradle/project/build/libs/roulette-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/home/gradle/project/build/libs/chatApp-0.0.1-SNAPSHOT.jar"]
 
