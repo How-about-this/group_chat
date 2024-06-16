@@ -4,3 +4,9 @@ spring:
       host: localhost
       port: 27017
       database: chatdb
+server:
+  port: 8081
+logging:
+  level:
+    org:
+      web: debug
