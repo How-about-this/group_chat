@@ -31,6 +31,7 @@ public class ChatController {
     @CrossOrigin
     @PostMapping("/chat")
     public Mono<Chat> sendMsg(@RequestBody Chat chat){
+
         chat.setCreateAt(LocalDateTime.now());
         log.info(chat.getMsg());
         return chatService.sendMsg(chat); // Object를 리턴하면 자동으로 JSON 변환(MessageConverter)

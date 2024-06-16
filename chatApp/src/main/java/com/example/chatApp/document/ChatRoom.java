@@ -15,4 +15,6 @@ public class ChatRoom {
     @Id
     private String id;
 
+    private String chatName;
+
 }
