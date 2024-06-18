@@ -1,5 +1,6 @@
 package com.example.chatApp.document;
 
+import com.example.chatApp.type.Status;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,11 +16,11 @@ public class Group {
     private String title;
     private String content;
     private String gender;
-    private String status;
+    private Status status;
     private List<String> members = new ArrayList<>();
 
 
-    public Group(String title, String content, String gender, String status, List<String> members) {
+    public Group(String title, String content, String gender, Status status, List<String> members) {
         this.title = title;
         this.content = content;
         this.gender = gender;

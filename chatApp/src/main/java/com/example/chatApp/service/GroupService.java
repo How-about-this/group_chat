@@ -21,8 +21,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GroupService {
     private final GroupMongoRepository groupMongoRepository;
-    private final MongoTemplate mongoTemplate;
-
     public void saveGroup(Group group){
         groupMongoRepository.save(group);
     }
@@ -45,6 +43,11 @@ public class GroupService {
     // 단일 조회
     public Group findByGroupId(String groupId){
         return groupMongoRepository.findByGroupId(groupId);
+    }
+
+    // 그룹 삭제
+    public void removeGroupById(String id){
+        groupMongoRepository.deleteById(id);
     }
 
 }

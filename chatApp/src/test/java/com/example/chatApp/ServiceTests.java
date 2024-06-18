@@ -9,6 +9,7 @@ import com.example.chatApp.repository.GroupMongoRepository;
 import com.example.chatApp.service.BalanceQuestionService;
 import com.example.chatApp.service.GroupService;
 import com.example.chatApp.service.UserService;
+import com.example.chatApp.type.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -68,7 +69,7 @@ public class ServiceTests {
     public void saveGroup(){
         List<String> list = new ArrayList<>();
         list.add("666fc74813b30619a85c7c17");
-        Group group = new Group("파티 구합니다","오늘 밤 사냥에 나서실 분","male","Full",list);
+        Group group = new Group("파티 구합니다","오늘 밤 사냥에 나서실 분","male", Status.모집중,list);
 
         groupMongoRepository.save(group);
     }
@@ -98,5 +99,11 @@ public class ServiceTests {
        //  666f67db161b936393d1e6a0  : 이건
        //  666fc74813b30619a85c7c17  : 심운보
 
+    }
+
+    @Test
+    public void deleteGroup(){
+        groupService.removeGroupById("666fd038d549e77696eb1fb4");
+        groupService.removeGroupById("667132296861822d4bfeb0a1");
     }
 }

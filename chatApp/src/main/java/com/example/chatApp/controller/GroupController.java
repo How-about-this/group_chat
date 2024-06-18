@@ -38,6 +38,7 @@ public class GroupController {
     @CrossOrigin
     @GetMapping("/group/list")
     public ResponseEntity<List<Group>> getAllGroup(){
+        log.info("그룹 리스트 도달");
         return ResponseEntity.ok(groupService.findAllGroup());
     }
 

@@ -15,7 +15,7 @@ public class User {
     private String id;
     private Long memberId;
     private String name;
-    private String gender;
+    private Gender gender;
     private String roomId = null;
     private boolean leader = false;
     private boolean isParty = false;
