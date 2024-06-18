@@ -13,6 +13,7 @@ import java.util.List;
 public class User {
     @Id
     private String id;
+    private Long memberId;
     private String name;
     private String gender;
     private String roomId = null;

@@ -26,6 +26,11 @@ public class UserController {
 
     }
 
+    @CrossOrigin
+    @GetMapping("/user/{memberId}")
+    public User selectUserByMemberId(@PathVariable Long memberId){
+        return userService.findUserByMemberId(memberId);
+    }
 
     // 신청하기
     @CrossOrigin

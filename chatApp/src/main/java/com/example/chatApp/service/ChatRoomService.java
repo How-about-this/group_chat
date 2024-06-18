@@ -29,4 +29,16 @@ public class ChatRoomService {
 
     }
 
+    public void removeChatRoom(User user, ChatRoom chatRoom){
+
+        if(user.isParty() && user.isLeader()){
+
+            chatRoomMongoRepository.delete(chatRoom);
+            userMongoRepository.delete(user);
+
+        }
+
+
+    }
+
 }

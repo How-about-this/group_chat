@@ -28,9 +28,16 @@ public class ChatRoomController {
 
     @CrossOrigin
     @PostMapping("/chat_room")
-    public void mkChatRoom(@RequestBody ChatRoom chatRoom, User user){
+    public void mkChatRoom(@RequestBody ChatRoom chatRoom,@RequestBody  User user){
         log.info("채팅방 생성");
         chatRoomService.saveChatRoom(chatRoom,user);
+
+    }
+
+    @CrossOrigin
+    @DeleteMapping("/chat_room")
+    public void deleteChatRoom(@RequestBody User user, @RequestBody ChatRoom chatRoom){
+
 
     }
 

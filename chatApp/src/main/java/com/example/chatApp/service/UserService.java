@@ -32,4 +32,8 @@ public class UserService {
         userMongoRepository.save(user);
     }
 
+    public User findUserByMemberId(Long memberId){
+        return userMongoRepository.findByMemberId(memberId);
+    }
+
 }
