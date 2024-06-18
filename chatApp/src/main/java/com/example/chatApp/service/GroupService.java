@@ -27,8 +27,8 @@ public class GroupService {
 
     // 유저 아이디로 찾아서 수정
     public void saveGroupMembers(Members members){
-        log.info(members.getMyUserId()+"#################################");
-        List<Group> group = groupMongoRepository.findByUserId(members.getMyUserId());
+        log.info(members.getLeaderUserId()+"#################################");
+        List<Group> group = groupMongoRepository.findByUserId(members.getLeaderUserId());
         group.get(0).getMembers().add(members.getInvitedUserId());
 
         groupMongoRepository.save(group.get(0));

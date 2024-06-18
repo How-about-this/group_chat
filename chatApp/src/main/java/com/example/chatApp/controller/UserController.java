@@ -16,27 +16,28 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
+    // user 생성 api
     @CrossOrigin
     @PostMapping("/user")
     public void saveUser(@RequestBody User user){
         log.info("유저 컨트롤러 접근!!!");
-        if(userService.findUserByMemberId(user.getMemberId()) == null)
         userService.saveUser(user);
-        else userService.updateUser(user);
-
     }
 
+    // user검색 jpa id 기준으로
     @CrossOrigin
     @GetMapping("/user/{memberId}")
-    public User selectUserByMemberId(@PathVariable Long memberId){
-        return userService.findUserByMemberId(memberId);
+    public ResponseEntity<User> selectUserByMemberId(@PathVariable Long memberId){
+        return ResponseEntity.ok(userService.findUserByMemberId(memberId));
     }
 
-    // 신청하기
+    // 외부인이 신청하기
     @CrossOrigin
     @PutMapping("/user/apply")
-    public void applyUser(Members members){
+    public void applyUser(@RequestBody Members members){
         userService.updateUserMembers(members);
     }
+
+
 
 }

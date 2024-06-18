@@ -6,11 +6,11 @@ import lombok.Data;
 @Data
 public class Members {
 
-    private String myUserId;
+    private String leaderUserId;
     private String invitedUserId;
 
-    public Members(String myUserId, String invitedUserId) {
-        this.myUserId = myUserId;
+    public Members(String leaderUserId, String invitedUserId) {
+        this.leaderUserId = leaderUserId;
         this.invitedUserId = invitedUserId;
     }
 }

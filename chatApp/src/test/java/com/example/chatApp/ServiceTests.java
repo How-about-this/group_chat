@@ -100,7 +100,8 @@ public class ServiceTests {
     // 유저 삭제 테스트 코드
     @Test
     public void updateUser(){
-        userMongoRepository.deleteById("6671856d9c073719838c8ea4");
+        userMongoRepository.deleteById("66718a8ff4d2316d71f31b80");
+        userMongoRepository.deleteById("66718aaaf4d2316d71f31b81");
 
     }
 
