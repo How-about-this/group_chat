@@ -2,6 +2,7 @@ package com.example.chatApp.controller;
 
 import com.example.chatApp.document.Chat;
 import com.example.chatApp.document.ChatRoom;
+import com.example.chatApp.document.User;
 import com.example.chatApp.service.ChatRoomService;
 import com.example.chatApp.service.ChatService;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,11 @@ public class ChatRoomController {
 
     @CrossOrigin
     @PostMapping("/chat_room")
-    public void mkChatRoom(@RequestBody ChatRoom chatRoom){
+    public void mkChatRoom(@RequestBody ChatRoom chatRoom, User user){
         log.info("채팅방 생성");
-        chatRoomService.saveChatRoom(chatRoom);
+        chatRoomService.saveChatRoom(chatRoom,user);
+
     }
+
+
 }

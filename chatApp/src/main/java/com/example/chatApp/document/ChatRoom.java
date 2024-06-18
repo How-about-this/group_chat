@@ -17,4 +17,5 @@ public class ChatRoom {
 
     private String chatName;
 
+
 }
