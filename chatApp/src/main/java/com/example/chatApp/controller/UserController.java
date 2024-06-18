@@ -20,9 +20,9 @@ public class UserController {
     @PostMapping("/user")
     public void saveUser(@RequestBody User user){
         log.info("유저 컨트롤러 접근!!!");
-        log.info(user.getName());
-        log.info(user.getGender().toString());
+        if(userService.findUserByMemberId(user.getMemberId()) == null)
         userService.saveUser(user);
+        else userService.updateUser(user);
 
     }
 
@@ -36,7 +36,7 @@ public class UserController {
     @CrossOrigin
     @PutMapping("/user/apply")
     public void applyUser(Members members){
-        userService.updateUser(members);
+        userService.updateUserMembers(members);
     }
 
 }

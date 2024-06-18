@@ -22,16 +22,18 @@ public class UserService {
         userMongoRepository.save(user);
     }
 
-    public List<User>  findUserByName(String name){
+    public User  findUserByName(String name){
         return userMongoRepository.findAllByName(name);
     }
 
-    public void updateUser(Members members){
+    public void updateUserMembers(Members members){
         User user = userMongoRepository.findById(members.getMyUserId()).get();
         user.getApplicants().add(members.getInvitedUserId());
         userMongoRepository.save(user);
     }
+    public void updateUser(User user){
 
+    }
     public User findUserByMemberId(Long memberId){
         return userMongoRepository.findByMemberId(memberId);
     }

@@ -3,12 +3,15 @@ package com.example.chatApp;
 
 import com.example.chatApp.document.BalanceQuestion;
 import com.example.chatApp.document.Group;
+import com.example.chatApp.document.User;
 import com.example.chatApp.domain.Members;
 import com.example.chatApp.repository.BalanceQuestionRepository;
 import com.example.chatApp.repository.GroupMongoRepository;
+import com.example.chatApp.repository.UserMongoRepository;
 import com.example.chatApp.service.BalanceQuestionService;
 import com.example.chatApp.service.GroupService;
 import com.example.chatApp.service.UserService;
+import com.example.chatApp.type.Gender;
 import com.example.chatApp.type.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -29,6 +32,8 @@ import java.util.List;
 @Rollback(value = false)
 @Slf4j
 public class ServiceTests {
+    @Autowired
+    private UserMongoRepository userMongoRepository;
     @Autowired
     private BalanceQuestionService balanceQuestionService;
     @Autowired
@@ -92,18 +97,21 @@ public class ServiceTests {
         System.out.println(groupService.findByGroupId("667132296861822d4bfeb0a1").toString());
     }
 
+    // 유저 삭제 테스트 코드
     @Test
     public void updateUser(){
-        Members members = new Members("666f67db161b936393d1e6a0","666fc74813b30619a85c7c17");
-        userService.updateUser(members);
-       //  666f67db161b936393d1e6a0  : 이건
-       //  666fc74813b30619a85c7c17  : 심운보
+        userMongoRepository.deleteById("6671856d9c073719838c8ea4");
 
     }
+
+
 
     @Test
     public void deleteGroup(){
         groupService.removeGroupById("666fd038d549e77696eb1fb4");
         groupService.removeGroupById("667132296861822d4bfeb0a1");
     }
+
+
+
 }
