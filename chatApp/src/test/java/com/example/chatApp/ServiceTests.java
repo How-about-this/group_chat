@@ -100,8 +100,7 @@ public class ServiceTests {
     // 유저 삭제 테스트 코드
     @Test
     public void updateUser(){
-        userMongoRepository.deleteById("66718a8ff4d2316d71f31b80");
-        userMongoRepository.deleteById("66718aaaf4d2316d71f31b81");
+        userMongoRepository.deleteById("66718b74f4d2316d71f31b83");
 
     }
 
@@ -109,10 +108,13 @@ public class ServiceTests {
 
     @Test
     public void deleteGroup(){
-        groupService.removeGroupById("666fd038d549e77696eb1fb4");
-        groupService.removeGroupById("667132296861822d4bfeb0a1");
+        groupService.removeGroupById("66718b74f4d2316d71f31b83");
     }
 
+    @Test
+    public void getUser(){
+        userService.findUserByMemberId(1L);
+    }
 
 
 }

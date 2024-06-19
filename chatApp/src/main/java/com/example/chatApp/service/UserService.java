@@ -19,6 +19,7 @@ public class UserService {
     private final UserMongoRepository userMongoRepository;
 
     public void saveUser(User user){
+        if(userMongoRepository.findByMemberId(user.getMemberId()) == null)
         userMongoRepository.save(user);
     }
 
