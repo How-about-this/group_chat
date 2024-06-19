@@ -23,6 +23,8 @@ public class ChatRoomController {
     @CrossOrigin
     @GetMapping("/chat_room")
     public ResponseEntity<List<ChatRoom>> getChatRoom(){
+
+        log.info("채팅방 목록 불러오기");
         return ResponseEntity.ok(chatRoomService.findAllChatRoom());
     }
 
