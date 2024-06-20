@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_9f5b3d1da489:latest
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_f2c534786301
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               value: root
