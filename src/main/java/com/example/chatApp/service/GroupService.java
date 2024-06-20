@@ -48,6 +48,7 @@ public class GroupService {
             invitideUser.setParty(true);
             log.info(leaderUser.toString());
             userMongoRepository.save(leaderUser);
+            userMongoRepository.save(invitideUser);
             groupMongoRepository.save(group);
         }else {
             log.info("############# 저장 안됨####################");
