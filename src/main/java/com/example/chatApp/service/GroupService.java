@@ -37,14 +37,21 @@ public class GroupService {
     // 유저 아이디로 찾아서 수정
     public void saveGroupMembers(Members members){
         log.info(members.getLeaderUserId()+"#################################");
-        List<Group> group = groupMongoRepository.findByUserId(members.getLeaderUserId());
-        group.get(0).getMembers().add(members.getInvitedUserId());
-        User user = userMongoRepository.findById(members.getLeaderUserId()).get();
-        user.getApplicants().remove(members.getInvitedUserId());
-        log.info(user.toString());
-        userMongoRepository.save(user);
-        groupMongoRepository.save(group.get(0));
+        Group group = groupMongoRepository.findByUserId(members.getLeaderUserId());
+        group.getMembers().add(members.getInvitedUserId());
 
+        User leaderUser = userMongoRepository.findById(members.getLeaderUserId()).get();
+        User invitideUser = userMongoRepository.findById(members.getLeaderUserId()).get();
+
+        if(group.getMembers().contains(members.getInvitedUserId())){
+            leaderUser.getApplicants().remove(members.getInvitedUserId());
+            invitideUser.setParty(true);
+            log.info(leaderUser.toString());
+            userMongoRepository.save(leaderUser);
+            groupMongoRepository.save(group);
+        }else {
+            log.info("############# 저장 안됨####################");
+        }
     }
 
 

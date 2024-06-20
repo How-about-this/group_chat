@@ -61,21 +61,8 @@
     &quot;last_opened_file_path&quot;: &quot;/Users/gimjong-gyu/Documents/GitHub/group_chat/build.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.ChatAppApplication">
-    <configuration name="ChatAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.chatApp.ChatAppApplication" />
-      <module name="chatApp.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.chatApp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ServiceTests.deleteChat" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ServiceTests.findQuestion">
+    <configuration name="ServiceTests.addQuestion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -88,7 +75,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.chatApp.ServiceTests.deleteChat&quot;" />
+            <option value="&quot;com.example.chatApp.ServiceTests.addQuestion&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -167,13 +154,36 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ServiceTests.findQuestion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.chatApp.ServiceTests.findQuestion&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ServiceTests.findQuestion" />
+        <item itemvalue="Gradle.ServiceTests.addQuestion" />
         <item itemvalue="Gradle.ServiceTests.deleteGroup" />
-        <item itemvalue="Gradle.ServiceTests.deleteUser" />
-        <item itemvalue="Gradle.ServiceTests.deleteChat" />
         <item itemvalue="Gradle.ServiceTests.deleteChatRoom" />
-        <item itemvalue="Application.ChatAppApplication" />
+        <item itemvalue="Gradle.ServiceTests.deleteUser" />
       </list>
     </recent_temporary>
   </component>

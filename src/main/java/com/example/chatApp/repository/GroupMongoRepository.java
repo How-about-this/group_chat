@@ -10,6 +10,6 @@ import java.util.List;
 public interface GroupMongoRepository extends MongoRepository<Group, String> {
 
     @Query("{ 'members' :?0 }")
-    public List<Group> findByUserId(String userId);
+    public Group findByUserId(String userId);
 
 }

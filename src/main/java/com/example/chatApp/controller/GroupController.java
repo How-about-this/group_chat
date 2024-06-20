@@ -30,7 +30,7 @@ public class GroupController {
     @PutMapping("/group")
     public void getGroup(@RequestBody Members members){
         groupService.saveGroupMembers(members);
-        log.info("그룹 찾기 컨트롤러 도달");
+        log.info("그룹 추가 컨트롤러 도달");
     }
 
     // 그룹 리스트

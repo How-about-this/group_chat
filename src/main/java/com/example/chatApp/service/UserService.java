@@ -20,6 +20,7 @@ public class UserService {
     private final UserMongoRepository userMongoRepository;
 
     public void saveUser(User user){
+        log.info("여기인가?");
         if(userMongoRepository.findByMemberId(user.getMemberId()) == null)
         userMongoRepository.save(user);
     }
@@ -30,9 +31,13 @@ public class UserService {
 
     public void updateUserMembers(Members members){
         User user = userMongoRepository.findById(members.getLeaderUserId()).get();
-        user.getApplicants().add(members.getInvitedUserId());
+        if(!user.getApplicants().contains(members.getInvitedUserId())) {
+            user.getApplicants().add(members.getInvitedUserId());
+            log.info("추가");
+            userMongoRepository.save(user);
+        }
+        log.info("추가되지 않음");
 
-        userMongoRepository.save(user);
     }
 
     public User findUserByMemberId(Long memberId){
