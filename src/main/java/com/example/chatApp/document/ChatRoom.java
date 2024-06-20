@@ -14,8 +14,6 @@ import java.util.List;
 public class ChatRoom {
     @Id
     private String id;
-
     private String chatName;
-
 
 }

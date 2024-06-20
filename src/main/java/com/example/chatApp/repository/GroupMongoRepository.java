@@ -12,7 +12,4 @@ public interface GroupMongoRepository extends MongoRepository<Group, String> {
     @Query("{ 'members' :?0 }")
     public List<Group> findByUserId(String userId);
 
-    @Query("{ 'id' :?0 }")
-    public Group findByGroupId(String groupId);
-
 }

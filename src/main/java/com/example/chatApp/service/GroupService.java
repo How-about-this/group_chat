@@ -1,8 +1,10 @@
 package com.example.chatApp.service;
 
 import com.example.chatApp.document.Group;
+import com.example.chatApp.document.User;
 import com.example.chatApp.domain.Members;
 import com.example.chatApp.repository.GroupMongoRepository;
+import com.example.chatApp.repository.UserMongoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GroupService {
     private final GroupMongoRepository groupMongoRepository;
+    private final UserMongoRepository userMongoRepository;
     public void saveGroup(Group group){
-        groupMongoRepository.save(group);
+
+        Group grpup1 = groupMongoRepository.save(group);
+        User user =userMongoRepository.findById(grpup1.getMembers().get(0)).get();
+        user.setLeader(true);
+        user.setParty(true);
+        userMongoRepository.save(user);
+
     }
 
     // 유저 아이디로 찾아서 수정
@@ -30,7 +39,10 @@ public class GroupService {
         log.info(members.getLeaderUserId()+"#################################");
         List<Group> group = groupMongoRepository.findByUserId(members.getLeaderUserId());
         group.get(0).getMembers().add(members.getInvitedUserId());
-
+        User user = userMongoRepository.findById(members.getLeaderUserId()).get();
+        user.getApplicants().remove(members.getInvitedUserId());
+        log.info(user.toString());
+        userMongoRepository.save(user);
         groupMongoRepository.save(group.get(0));
 
     }
@@ -40,10 +52,9 @@ public class GroupService {
     public List<Group> findAllGroup(){
         return groupMongoRepository.findAll();
     }
+
     // 단일 조회
-    public Group findByGroupId(String groupId){
-        return groupMongoRepository.findByGroupId(groupId);
-    }
+    public Group findByGroupId(String groupId){return groupMongoRepository.findById(groupId).get();}
 
     // 그룹 삭제
     public void removeGroupById(String id){

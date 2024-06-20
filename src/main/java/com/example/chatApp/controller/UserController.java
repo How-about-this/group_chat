@@ -20,6 +20,7 @@ public class UserController {
     @CrossOrigin
     @PostMapping("/user")
     public void saveUser(@RequestBody User user){
+        log.info(user.toString());
         log.info("유저 컨트롤러 접근!!!");
         userService.saveUser(user);
     }
@@ -30,11 +31,26 @@ public class UserController {
     public ResponseEntity<User> selectUserByMemberId(@PathVariable Long memberId){
         return ResponseEntity.ok(userService.findUserByMemberId(memberId));
     }
+    @CrossOrigin
+    @GetMapping("/user/members/{userId}")
+    public ResponseEntity<List<User>> selectMembers(@PathVariable String userId){
+        log.info("String id로 유저 찾기 컨트롤러 도달");
+        return ResponseEntity.ok(userService.findMembers(userId));
+    }
+
+    @CrossOrigin
+    @GetMapping("/user/get/{userId}")
+    public ResponseEntity<User> selectUser(@PathVariable String userId){
+        return ResponseEntity.ok(userService.findUserById(userId));
+    }
 
     // 외부인이 신청하기
     @CrossOrigin
     @PutMapping("/user/apply")
     public void applyUser(@RequestBody Members members){
+        log.info("신청컨트롤러 도달");
+        log.info(members.getLeaderUserId());
+        log.info(members.getInvitedUserId());
         userService.updateUserMembers(members);
     }
 

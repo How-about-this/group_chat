@@ -3,6 +3,7 @@ package com.example.chatApp.controller;
 import com.example.chatApp.document.Chat;
 import com.example.chatApp.document.ChatRoom;
 import com.example.chatApp.document.User;
+import com.example.chatApp.domain.ChatRoomAndUser;
 import com.example.chatApp.service.ChatRoomService;
 import com.example.chatApp.service.ChatService;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +31,10 @@ public class ChatRoomController {
 
     @CrossOrigin
     @PostMapping("/chat_room")
-    public void mkChatRoom(@RequestBody ChatRoom chatRoom,@RequestBody  User user){
+    public void mkChatRoom(@RequestBody ChatRoomAndUser chatRoomAndUser){
         log.info("채팅방 생성");
-        chatRoomService.saveChatRoom(chatRoom,user);
+        log.info(chatRoomAndUser.getChatRoom().getChatName());
+        chatRoomService.saveChatRoom(chatRoomAndUser);
 
     }
 

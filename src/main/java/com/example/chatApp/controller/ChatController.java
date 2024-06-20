@@ -24,6 +24,7 @@ public class ChatController {
     @CrossOrigin
     @GetMapping(value = "/chat/roomId/{roomId}",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Chat> findByRoomNum(@PathVariable String roomId){
+        log.info("채팅 시작");
         return chatService.findByRoomNum(roomId);
     }
 

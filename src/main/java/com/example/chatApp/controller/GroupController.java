@@ -1,6 +1,5 @@
 package com.example.chatApp.controller;
 
-import com.example.chatApp.document.ChatRoom;
 import com.example.chatApp.document.Group;
 import com.example.chatApp.domain.Members;
 import com.example.chatApp.service.GroupService;
@@ -9,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -47,7 +45,13 @@ public class GroupController {
     // 그룹 상세보기
     @CrossOrigin
     @GetMapping("/group/{groupId}")
-    public ResponseEntity<Group> getGroupByGroupId(String groupId){
+    public ResponseEntity<Group> getGroupByGroupId(@PathVariable String groupId){
+
+        log.info("그룹 상세보기 도달");
+        log.info(groupId);
+
+        log.info("그룹 상세보기 실행");
+
         return ResponseEntity.ok(groupService.findByGroupId(groupId));
     }
 

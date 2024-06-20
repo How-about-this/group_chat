@@ -13,4 +13,7 @@ public interface UserMongoRepository extends MongoRepository<User, String> {
 
     @Query("{ 'memberId' :?0 }")
     public User findByMemberId(Long memberId);
+
+    @Query("{ 'memberId' :?0 }")
+    public User findByMembersId(String membersId);
 }
