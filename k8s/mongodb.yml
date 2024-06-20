@@ -21,11 +21,11 @@ spec:
               value: root
             - name: MONGO_INITDB_ROOT_PASSWORD
               value: rootpassword
-          volumeMounts:
-            - mountPath: /data/db
-              name: data
-            - mountPath: /docker-entrypoint-initdb.d
-              name: init-db
+#          volumeMounts:
+#            - mountPath: /data/db
+#              name: data
+#            - mountPath: /docker-entrypoint-initdb.d
+#              name: init-db
           resources:
             limits:
               memory: 1Gi
