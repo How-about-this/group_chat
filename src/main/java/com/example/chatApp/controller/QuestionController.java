@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -17,8 +18,11 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @CrossOrigin
-    @GetMapping("/question")
-    public ResponseEntity<Question> randomQuestion(){
-        return ResponseEntity.ok(questionService.ranQuestion());
+    @GetMapping("/question/{roodId}")
+    public ResponseEntity<Question> randomQuestion(@PathVariable String roodId){
+        Question question = questionService.ranQuestion(roodId);
+        log.info(question.toString());
+
+        return ResponseEntity.ok(question);
     }
 }

@@ -95,14 +95,15 @@ public class ServiceTests {
 
     @Test
     public void deleteChatRoom(){
-        chatRoomMongoRepository.deleteById("6673c90133e7682ed53bd72b");
-
+        chatRoomMongoRepository.deleteById("66745b05f09d8140b3658ca6");
+        chatRoomMongoRepository.deleteById("66745b1ff09d8140b3658ca7");
 
     }
+
     @Test
     public void deleteChat(){
-        chatMongoRepository.deleteById("6673bde2b4242116a2d871ef");
-        chatMongoRepository.deleteById("6673bde5b4242116a2d871f0");
+        chatMongoRepository.deleteById("66745b05f09d8140b3658ca6");
+        chatMongoRepository.deleteById("66745b1ff09d8140b3658ca7");
 
 
 
@@ -178,8 +179,12 @@ public class ServiceTests {
 
     @Test
     public void findQuestion() {
-        System.out.println(questionMongoRepository.findOneByIndex(2).toString());
-        System.out.println(questionService.ranQuestion().toString());
+        System.out.println(questionService.ranQuestion("66744f4af138b67ab4a252a0").toString());
+    }
+
+    @Test
+    public void findChat(){
+        chatMongoRepository.mFindByRoomNum("66744f4af138b67ab4a252a0");
     }
 
 }

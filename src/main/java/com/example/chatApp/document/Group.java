@@ -16,7 +16,7 @@ public class Group {
     private String title;
     private String content;
     private String gender;
-    private Status status = Status.모집중;
+    private Status status;
     private List<String> members = new ArrayList<>();
 
 

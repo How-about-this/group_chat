@@ -19,5 +19,6 @@ public class User {
     private String roomId = null;
     private boolean leader = false;
     private boolean isParty = false;
+    private boolean isRoom = false;
     private List<String> applicants = new ArrayList<>();
 }

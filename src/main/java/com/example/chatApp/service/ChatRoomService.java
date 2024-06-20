@@ -27,6 +27,7 @@ public class ChatRoomService {
         ChatRoom room = chatRoomMongoRepository.save(chatRoomAndUser.getChatRoom());
         User user = chatRoomAndUser.getUser();
         user.setRoomId(room.getId());
+        user.setRoom(true);
         userMongoRepository.save(user);
 
     }

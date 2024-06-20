@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 public interface ChatRepository extends ReactiveMongoRepository<Chat, String> {
     @Tailable // 커서를 안닫고 계속 유지
     @Query("{ roomId:?0 }")
-    Flux<Chat> mFindByRoomNum(String roomNum);
+    Flux<Chat> mFindByRoomNum(String roomId);
 
     @Query("{ }")
     Flux<Chat> findAllBy(Pageable pageable);
