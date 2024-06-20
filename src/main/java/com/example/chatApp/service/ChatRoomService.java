@@ -1,9 +1,11 @@
 package com.example.chatApp.service;
 
 import com.example.chatApp.document.ChatRoom;
+import com.example.chatApp.document.Group;
 import com.example.chatApp.document.User;
 import com.example.chatApp.domain.ChatRoomAndUser;
 import com.example.chatApp.repository.ChatRoomMongoRepository;
+import com.example.chatApp.repository.GroupMongoRepository;
 import com.example.chatApp.repository.UserMongoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,17 +21,21 @@ import java.util.List;
 public class ChatRoomService {
     private final ChatRoomMongoRepository chatRoomMongoRepository;
     private final UserMongoRepository userMongoRepository;
+    private final GroupMongoRepository groupMongoRepository;
+
     public List<ChatRoom> findAllChatRoom(){
         return chatRoomMongoRepository.findAll();
     }
     public void saveChatRoom(ChatRoomAndUser chatRoomAndUser){
         log.info("서비스 입니다");
         ChatRoom room = chatRoomMongoRepository.save(chatRoomAndUser.getChatRoom());
-        User user = chatRoomAndUser.getUser();
-        user.setRoomId(room.getId());
-        user.setRoom(true);
-        userMongoRepository.save(user);
-
+//        User user = chatRoomAndUser.getUser();
+//        user.setRoomId(room.getId());
+//        user.setRoom(true);
+//        userMongoRepository.save(user);
+        Group group = chatRoomAndUser.getGroup();
+        group.setRoomId(chatRoomAndUser.getChatRoom().getId());
+        groupMongoRepository.save(group);
     }
 
     public void removeChatRoom(User user, ChatRoom chatRoom){

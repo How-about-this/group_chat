@@ -54,7 +54,13 @@ public class GroupController {
 
         return ResponseEntity.ok(groupService.findByGroupId(groupId));
     }
-
+    // 그룹 찾기 멤버 아이디로
+    @CrossOrigin
+    @GetMapping("/group/user/{userId}")
+    public ResponseEntity<Group> getGroupByUserId(@PathVariable String userId){
+        log.info("그룹 찾기 유저 id로 도달");
+        return ResponseEntity.ok(groupService.findGroupByUserId(userId));
+    }
 
 
 

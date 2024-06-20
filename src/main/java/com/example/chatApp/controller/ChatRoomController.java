@@ -34,6 +34,7 @@ public class ChatRoomController {
     public void mkChatRoom(@RequestBody ChatRoomAndUser chatRoomAndUser){
         log.info("채팅방 생성");
         log.info(chatRoomAndUser.getChatRoom().getChatName());
+        log.info(chatRoomAndUser.getGroup().getContent());
         chatRoomService.saveChatRoom(chatRoomAndUser);
 
     }

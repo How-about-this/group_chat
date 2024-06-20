@@ -72,4 +72,8 @@ public class GroupService {
         groupMongoRepository.deleteById(id);
     }
 
+    // 그룹 찾기 멤버 아이디로
+    public Group findGroupByUserId(String userId){
+        return groupMongoRepository.findByUserId(userId);
+    }
 }

@@ -88,22 +88,24 @@ public class ServiceTests {
     // 유저 삭제 테스트 코드
     @Test
     public void deleteUser(){
-        userMongoRepository.deleteById("6673c553117b7c59b3c69aad");
-        userMongoRepository.deleteById("6673c54a117b7c59b3c69aac");
+        userMongoRepository.deleteById("667464fd0686d702082e64cb");
+        userMongoRepository.deleteById("66746527cf1bcf6563e73eca");
 
     }
 
     @Test
     public void deleteChatRoom(){
-        chatRoomMongoRepository.deleteById("66745b05f09d8140b3658ca6");
-        chatRoomMongoRepository.deleteById("66745b1ff09d8140b3658ca7");
-
+        chatRoomMongoRepository.deleteById("667465a9cf1bcf6563e73ecc");
     }
 
     @Test
     public void deleteChat(){
-        chatMongoRepository.deleteById("66745b05f09d8140b3658ca6");
-        chatMongoRepository.deleteById("66745b1ff09d8140b3658ca7");
+        chatMongoRepository.deleteById("667465f9cf1bcf6563e73ecd");
+        chatMongoRepository.deleteById("6674660ecf1bcf6563e73ece");
+        chatMongoRepository.deleteById("6674664dfc49f1664db1628c");
+        chatMongoRepository.deleteById("6674666efc49f1664db1628d");
+        chatMongoRepository.deleteById("66746672fc49f1664db1628e");
+        chatMongoRepository.deleteById("66746674fc49f1664db1628f");
 
 
 
@@ -119,7 +121,7 @@ public class ServiceTests {
 
     @Test
     public void deleteGroup(){
-        groupService.removeGroupById("6673c70d8e179f3b20bfc5c1");
+        groupService.removeGroupById("66746587cf1bcf6563e73ecb");
 
     }
 

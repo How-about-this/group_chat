@@ -17,6 +17,7 @@ public class Group {
     private String content;
     private String gender;
     private Status status;
+    private String roomId = null;
     private List<String> members = new ArrayList<>();
 
 
