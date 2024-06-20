@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+spec:
+  serviceName: mongodb
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          # 여러분의 mongodb image 주소를 입력해주세요.
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_9f5b3d1da489
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: root
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: rootpassword
+          volumeMounts:
+            - mountPath: /data/db
+              name: data
+            - mountPath: /docker-entrypoint-initdb.d
+              name: init-db
+          resources:
+            limits:
+              memory: 1Gi
+          readinessProbe:
+            exec:
+              command:
+                - "sh"
+                - "-c"
+                - "mongo --eval 'db.adminCommand('ping')'"
+            initialDelaySeconds: 30
+            timeoutSeconds: 10
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: mongodb
+  spec:
+    type: ClusterIP
+    clusterIP: None # Headless
+    selector:
+      app: mongodb
+    ports:
+      - port: 27017
