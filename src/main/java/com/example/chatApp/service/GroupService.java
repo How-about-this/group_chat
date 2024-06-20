@@ -37,21 +37,24 @@ public class GroupService {
     // 유저 아이디로 찾아서 수정
     public void saveGroupMembers(Members members){
         log.info(members.getLeaderUserId()+"#################################");
+        log.info(members.getInvitedUserId()+"#################################");
         Group group = groupMongoRepository.findByUserId(members.getLeaderUserId());
         group.getMembers().add(members.getInvitedUserId());
 
         User leaderUser = userMongoRepository.findById(members.getLeaderUserId()).get();
-        User invitideUser = userMongoRepository.findById(members.getLeaderUserId()).get();
+        User invitedUser = userMongoRepository.findById(members.getInvitedUserId()).get();
 
-        if(group.getMembers().contains(members.getInvitedUserId())){
+        log.info(String.valueOf(group.getMembers().contains(members.getInvitedUserId())));
+
+        if(!group.getMembers().contains(members.getInvitedUserId())){
+            log.info("############# 저장 안됨####################");
+        }else {
             leaderUser.getApplicants().remove(members.getInvitedUserId());
-            invitideUser.setParty(true);
+            invitedUser.setParty(true);
             log.info(leaderUser.toString());
             userMongoRepository.save(leaderUser);
-            userMongoRepository.save(invitideUser);
+            userMongoRepository.save(invitedUser);
             groupMongoRepository.save(group);
-        }else {
-            log.info("############# 저장 안됨####################");
         }
     }
 
