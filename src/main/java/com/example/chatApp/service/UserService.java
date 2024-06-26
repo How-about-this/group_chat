@@ -2,6 +2,7 @@ package com.example.chatApp.service;
 
 import com.example.chatApp.document.User;
 import com.example.chatApp.domain.Members;
+import com.example.chatApp.domain.UserAndRoomId;
 import com.example.chatApp.repository.GroupMongoRepository;
 import com.example.chatApp.repository.UserMongoRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,5 +55,10 @@ public class UserService {
         }
 
         return members;
+    }
+    public void inUser(UserAndRoomId userAndRoomId){
+        User user =  new User();
+        user.setRoomId(userAndRoomId.getRoomId());
+        userMongoRepository.save(user);
     }
 }

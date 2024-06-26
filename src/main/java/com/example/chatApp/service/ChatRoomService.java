@@ -29,10 +29,10 @@ public class ChatRoomService {
     public void saveChatRoom(ChatRoomAndUser chatRoomAndUser){
         log.info("서비스 입니다");
         ChatRoom room = chatRoomMongoRepository.save(chatRoomAndUser.getChatRoom());
-//        User user = chatRoomAndUser.getUser();
-//        user.setRoomId(room.getId());
+        User user = chatRoomAndUser.getUser();
+        user.setRoomId(room.getId());
 //        user.setRoom(true);
-//        userMongoRepository.save(user);
+        userMongoRepository.save(user);
         Group group = chatRoomAndUser.getGroup();
         group.setRoomId(chatRoomAndUser.getChatRoom().getId());
         groupMongoRepository.save(group);

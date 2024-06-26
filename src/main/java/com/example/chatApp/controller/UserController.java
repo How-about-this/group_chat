@@ -2,6 +2,7 @@ package com.example.chatApp.controller;
 
 import com.example.chatApp.document.User;
 import com.example.chatApp.domain.Members;
+import com.example.chatApp.domain.UserAndRoomId;
 import com.example.chatApp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +53,13 @@ public class UserController {
         log.info(members.getLeaderUserId());
         log.info(members.getInvitedUserId());
         userService.updateUserMembers(members);
+    }
+
+    // 외부인이 채팅 들어가면
+    @CrossOrigin
+    @PutMapping("/user/in")
+    public void inUser(@RequestBody UserAndRoomId userAndRoomId){
+        userService.inUser(userAndRoomId);
     }
 
 

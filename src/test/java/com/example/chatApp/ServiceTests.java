@@ -1,6 +1,7 @@
 package com.example.chatApp;
 
 
+import com.example.chatApp.document.Chat;
 import com.example.chatApp.document.Question;
 import com.example.chatApp.document.Group;
 import com.example.chatApp.document.User;
@@ -57,6 +58,15 @@ public class ServiceTests {
     public void findUser(){
         userService.findUserByName("이건");
     }
+    @Test
+    public void sampleChat(){
+        Chat chat = new Chat();
+        chat.setRoomId("111");
+        chat.setMsg("sample");
+        chat.setSender("sample");
+
+        chatMongoRepository.save(chat);
+    }
 
     @Test
     public void saveGroup(){
@@ -86,16 +96,34 @@ public class ServiceTests {
     }
 
     // 유저 삭제 테스트 코드
-    @Test
-    public void deleteUser(){
-        userMongoRepository.deleteById("667464fd0686d702082e64cb");
-        userMongoRepository.deleteById("66746527cf1bcf6563e73eca");
 
+
+
+    @Test
+    public void updateUser(){
+        User user = userMongoRepository.findById("66718c33f4d2316d71f31b84").get();
+        user.getApplicants().remove("66718c33f4d2316d71f31b84");
+        userMongoRepository.save(user);
     }
 
     @Test
+    public void deleteUser(){
+        userMongoRepository.deleteById("667482ba3da0bb1bc3d6d0d1");
+        userMongoRepository.deleteById("667482c33da0bb1bc3d6d0d2");
+
+
+    }
+    @Test
+    public void deleteGroup(){
+        groupService.removeGroupById("667482dc3da0bb1bc3d6d0d3");
+
+
+    }
+    @Test
     public void deleteChatRoom(){
-        chatRoomMongoRepository.deleteById("667465a9cf1bcf6563e73ecc");
+        chatRoomMongoRepository.deleteById("6674725b0ab46553e6ff05cd");
+        chatRoomMongoRepository.deleteById("667472f26feb8b1f52842767");
+        chatRoomMongoRepository.deleteById("66747cc75f793d588817474a");
     }
 
     @Test
@@ -110,20 +138,11 @@ public class ServiceTests {
 
 
     }
-    @Test
-    public void updateUser(){
-        User user = userMongoRepository.findById("66718c33f4d2316d71f31b84").get();
-        user.getApplicants().remove("66718c33f4d2316d71f31b84");
-        userMongoRepository.save(user);
-    }
 
 
 
-    @Test
-    public void deleteGroup(){
-        groupService.removeGroupById("66746587cf1bcf6563e73ecb");
 
-    }
+
 
     @Test
     public void getUser(){

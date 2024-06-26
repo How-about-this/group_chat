@@ -16,6 +16,7 @@ public class User {
     private Long memberId;
     private String name;
     private Gender gender;
+    private String roomId = null;
     private boolean leader = false;
     private boolean isParty = false;
     private List<String> applicants = new ArrayList<>();
